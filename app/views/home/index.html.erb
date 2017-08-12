@@ -1,0 +1,11 @@
+<div class="<%= @active_event.happening_class %>">
+  <p><%= @active_event.happening_class %></p>
+
+  <p>Time Until <%= @active_event.start_or_end_string %>: <%= @active_event.time_until %></p>
+</div>
+
+<ul>
+<% @events.each do |event| %>
+<li><%= event.starts_at %> - <%= event.ends_at %>: <%= event.time_until %></li>
+<% end %>
+</ul>
