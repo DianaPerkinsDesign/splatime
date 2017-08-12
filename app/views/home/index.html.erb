@@ -1,13 +1,33 @@
-<% if @active_event %>
-<div class="<%= @active_event.happening_class %>">
-  <p><%= @active_event.happening_class %></p>
+<div class="container home">
+  <%= image_tag "salmon-run-logo.png", class: "logo" %>
 
-  <p>Time Until <%= @active_event.start_or_end_string %>: <%= @active_event.time_until %></p>
+	<% if @active_event %>
+	<section class="active-event <%= @active_event.happening_class %>">
+
+    <% if @active_event.going_on_now? %>
+      <%= image_tag "Salmon-Run-Orange-Shape.png", class: "orange-shape" %>
+      <h2>It's Salmon Run Time!</h2>
+    <% end %>
+
+	  <p class="time-until">Time Until <%= @active_event.start_or_end_string %>: <%= @active_event.time_until %></p>
+
+    <p class="time-until-date">
+    <% if !@active_event.going_on_now? %>
+      ( Starts <%= @active_event.starts_at.to_s(:full_date_string) %> )
+    <% else %>
+      ( Ends <%= @active_event.time_until %> )
+    <% end %>
+    </p>
+
+	</section>
+	<% end %>
+  <section class="future-events">
+  	<ul>
+  	<% @events.each do |event| %>
+  		<li><span><%= event.starts_at.to_s(:full_date_string) %> - <%= event.ends_at.to_s(:full_date_string) %></span> <span class="event-time-until"><%= event.time_until %></span></li>
+  	<% end %>
+    </ul>
+    <%= image_tag "salmon-run-char.png", class: "char" %>
+    <%= image_tag "salmon-run-char-2.png", class: "char-2" %>
+  </section>
 </div>
-<% end %>
-
-<ul>
-<% @events.each do |event| %>
-<li><%= event.starts_at %> - <%= event.ends_at %>: <%= event.time_until %></li>
-<% end %>
-</ul>

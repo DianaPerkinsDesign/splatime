@@ -1,3 +1,128 @@
-// Place all the styles related to the home controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+@import url('https://fonts.googleapis.com/css?family=Luckiest+Guy');
+
+body {
+	font-family: 'VAGRundschriftD', 'Arial Rounded', sans-serif;
+	background: url('bg-primary.jpg');
+  color: #fff;
+  overflow-x: hidden;
+}
+
+.container {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.logo {
+  width: 90%;
+  display: block;
+  margin: 5vw auto 0;
+}
+
+.happening {
+  position: relative;
+
+  .orange-shape {
+    width: 100%;
+    display: block;
+    position: absolute;
+    z-index: 1;
+    top: -6vw;
+  }
+
+  h2 {
+    font-family: 'Luckiest Guy', sans-serif;
+    letter-spacing: 2px;
+    font-size: 6vw;
+    text-align: center;
+    position: relative;
+    z-index: 2;
+    padding-top: 9vw;
+  }
+
+  .time-until {
+    padding-top: 4vw;
+  }
+}
+
+.active-event {
+  .time-until {
+    font-size: 2em;
+    text-align: center;
+    margin-bottom: 0;
+  }
+  .time-until-date {
+    text-align: center;
+    margin-top: 0;
+  }
+}
+
+.future-events {
+  position: relative;
+
+  .char {
+    display: none;
+  }
+
+  .char-2 {
+    display: none;
+  }
+}
+
+.future-events {
+  background: url('bg-primary-white.jpg');
+  transform: perspective(40px) rotateX(1deg);
+  z-index: 1;
+
+  ul {
+    transform: perspective(40px) rotateX(-1deg);
+    padding: 2em 3em;
+    list-style-type: none;
+    position: relative;
+    z-index: 3;
+  }
+
+  li {
+    background: url('noise.png') #FE4C26;
+    padding: 1em;
+    margin: 1em .5em;
+    display: flex;
+    justify-content: space-between;
+  }
+}
+
+@media only screen and (min-width: 880px) {
+  .happening {
+    .orange-shape {
+      top: -3em;
+    }
+    h2 {
+      font-size: 4em;
+      padding-top: 1.3em;
+    }
+    .time-until {
+      padding-top: 1em;
+    }
+  }
+  .future-events {
+    margin-top: 5em;  
+    .char {
+      display: block;
+      position: absolute;
+      top: -10em;
+      max-width: 300px;
+      right: -3em;
+      z-index: 2;
+      transform: perspective(40px) rotateX(-1deg);
+    }
+
+    .char-2 {
+      display: block;
+      position: absolute;
+      bottom: -4em;
+      left: -5em;
+      z-index: 2;
+      max-width: 400px;
+      transform: perspective(40px) rotateX(-1deg);
+    }
+  }
+}

@@ -13,12 +13,12 @@
 
   <div class="field">
     <%= form.label :starts_at %>
-    <%= form.datetime_select :starts_at, id: :event_starts_at %>
+    <%= form.datetime_select :starts_at, { ampm: true, minute_step: 60 }, id: :event_starts_at %>
   </div>
 
   <div class="field">
     <%= form.label :ends_at %>
-    <%= form.datetime_select :ends_at, id: :event_ends_at %>
+    <%= form.datetime_select :ends_at, { ampm: true, minute_step: 60 }, id: :event_ends_at %>
   </div>
 
   <div class="actions">

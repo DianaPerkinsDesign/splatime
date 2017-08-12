@@ -1,0 +1,1 @@
+Time::DATE_FORMATS[:full_date_string] = "%B %e, %Y %l:%M %p" # January 01, 2017 09:00 pm

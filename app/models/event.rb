@@ -1,5 +1,8 @@
 class Event < ApplicationRecord
+  include ActionView::Helpers::DateHelper
+
   validate :ends_at_is_after_starts_at
+
   def ends_at_is_after_starts_at
     if starts_at > ends_at
       errors.add(:ends_at, "must be after starts at")
@@ -30,19 +33,10 @@ class Event < ApplicationRecord
 
 	def time_until
 		if going_on_now?
-			time_left = ends_at - Time.now
+      time_ago_in_words(ends_at)
     else
-      time_left = starts_at - Time.now
+      time_ago_in_words(starts_at)
     end
-    time_in_days_and_hours(time_left)
 	end
 
-  def time_in_days_and_hours(time_left)
-    days_left = (time_left / (60 * 60 * 24)).floor
-    hours_left = ((time_left - days_left.days.to_i) / (60 * 60)).floor
-    time_string = ""
-    time_string += "#{days_left} days, " if days_left > 0
-    time_string += "#{hours_left} hours"
-    time_string
-  end
 end
