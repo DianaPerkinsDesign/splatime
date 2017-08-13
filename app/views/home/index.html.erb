@@ -15,7 +15,7 @@
     <% if !@active_event.going_on_now? %>
       ( Starts <%= @active_event.starts_at.to_s(:full_date_string) %> )
     <% else %>
-      ( Ends <%= @active_event.time_until %> )
+      ( Ends <%= @active_event.ends_at.to_s(:full_date_string) %> )
     <% end %>
     </p>
 
